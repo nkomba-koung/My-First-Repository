@@ -1,6 +1,4 @@
 # Loan Data Exploration
-## by Nkomba A Koung
-
 
 ## Dataset
 
