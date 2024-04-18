@@ -1,0 +1,226 @@
+/* Styles pour le corps de la page */
+body {
+    background-image: url('/images/blue_square_1.png'); /* Spécifie l'image à utiliser comme arrière-plan */
+    background-size: cover; /* Redimensionne l'image pour qu'elle couvre l'ensemble de l'entête */
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* justifier le texte en centrer */
+    align-items: center; /* mettre tous les elements au centre de la page */
+    height: 100vh;
+    width: 98%;
+}
+
+
+/* Definition de l'animation des messages */
+/*Effet de zoom lors de l'affichage des messages*/
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Styles de l'entête */
+
+.header{
+    height: 30%; /* Définit la hauteur de l'entête */
+    width: 100%;
+}
+
+.img1{
+    position: absolute; /* ou relative, selon vos besoins */
+    top: 0.5%; /* Position verticale */
+    left: 0.5%; /* Position horizontale */
+    scale: 0.5;
+    z-index: 1; /* Pour placer l'image au-dessus des elements de la page */
+}
+
+.two{
+    margin-top: 5%;
+    text-align: center;
+}
+
+.third{
+    height: 14%;
+    width: 14%;
+    position: absolute;
+    top: 1%;
+    right: 5%;
+}
+
+.img2{
+    max-width: 100%; /* maintenir les dimensions de l'image dans le bloc */
+}
+
+/* Styles du titre */
+h1, h3 {
+    font-family: "Eras Bold ITC";
+}
+
+/* Styles du contenu principal */
+.main-part {
+    display: flex;
+    width: 100%; /* occupe 100% de la largeur de la page */
+    height: 70%;
+    background-color: white;
+}
+
+/* navigation dans les fichiers du chat */
+.third-part{
+    width: 20%;
+    height: 97%;
+    background-color: #f2f2f2; /* gris foncé */
+    border-radius: 10px;
+    margin-left: 2%;
+    border: 1px solid #cccccc;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.third-part img{
+    width: 40%;
+    margin-top: 10%;
+    margin-left: 30%;
+    cursor: pointer;
+}
+
+.third-part h5{
+    color: black;
+    text-align: center;
+}
+
+/* partie chargée du chat */
+.second-part {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%; /* occupe 100% de son bloc de la page */
+    /*background-color: #ffffff;  blanc */
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);  ombre légère */
+}
+
+/* Styles du box du iframe */
+.preview {
+    width: 100%;
+    margin: 10px;
+}
+
+/* Style du iframe */
+.pdfViewer {
+    width: 97.5%;
+    height: 100%;
+}
+
+/* Styles pour le conteneur du chat */
+.chat-container {
+    width: 100%;
+    height: 100%;
+    max-height: 240px;
+    float: bottom;
+}
+
+/* Styles pour le conteneur des messages du chat */
+.chat-messages-container {
+    background-color: #f2f2f2; /* gris clair */
+    border: 1px solid #cccccc; /* gris clair */
+    border-radius: 10px;
+    overflow-y: auto;
+    height: calc(100% - 60px); /* Hauteur ajustée pour les messages (60px pour le formulaire) */
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+/* Styles pour les messages du chat */
+.message-user, .message-cloudbank {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    clear: both; /* comportement d'un element au milieu des flottants, l'empechant d'etre a gauche oua droite des flotteurs */
+    overflow-wrap: break-word;
+    animation: zoomIn 1s ease-in-out;
+}
+
+.message-user {
+    background-color: #4CAF50; /* vert clair */
+    float: right;
+}
+
+.message-cloudbank {
+    background-color: #a5a5a5; /* gris foncé */
+    float: left;
+}
+
+/* Styles pour l'entête du message */
+.message-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 1px black solid;
+}
+
+/* Properties of the options section */
+.options {
+    display: flex;
+}
+
+/* Styles pour le formulaire */
+form {
+    display: flex;
+    width: 90%;
+}
+
+/* Styles pour le champ de saisie du chat */
+.chat-input {
+    width: calc(100% - 130px); /* largeur ajustée */
+    padding: 8px;
+    border: 1px solid #cccccc; /* gris clair */
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 2px;
+    margin-left: 10px;
+}
+
+/* Styles pour le bouton d'envoi du chat */
+.chat-submit-button {
+    background-color: #4CAF50; /* vert */
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 0px;
+}
+
+/* properties of the image */
+.loading {
+     position: absolute; /* ou relative, selon vos besoins */
+     top: 55%; /* Position verticale */
+     left: 40%; /* Position horizontale */
+     scale: 0.3;
+     z-index: 1; /* Pour placer l'image au-dessus du formulaire si nécessaire */
+}
+
+/* properties of the reset button */
+.chat-reset-button {
+    background-color: #4CAF50; /* vert */
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+
+
