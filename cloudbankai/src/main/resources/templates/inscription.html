@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inscription</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/layouts/style_connect.css}">
+    </head>
+    <body>
+        <div class="container" id="container">
+            <h2>Inscription à CloudBank AI</h2>
+
+            <form id="login-form" method="post" action="#"
+                  th:action = "@{/inscription}" th:object = "${user}">
+                <h4 style="text-align: center; color: red" th:text="${problem}"></h4>
+                <div class="form-control">
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input th:field="*{username}" type="text" id="username"
+                           name="username" minlength="2"
+                           placeholder="Entrer votre nom ici...." required>
+                    <div class="col-sm-4">
+                        <span class="text-danger" th:errors="*{username}"> </span>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="password">Mot de passe:</label>
+                    <input th:field="*{password}" type="password" id="password"
+                           name="password" minlength="5"
+                           placeholder="Entrer votre mot de passe...." required>
+                    <div class="col-sm-4">
+                        <span class="text-danger" th:errors="*{password}"> </span>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="confirm_password">Confirmation Mot de passe:</label>
+                    <input th:field="*{password}" type="password" id="confirm_password"
+                           name="password" minlength="5"
+                           placeholder="Confirmer votre mot de passe...." required>
+                    <div class="col-sm-4">
+                        <span class="text-danger" th:errors="*{password}"> </span>
+                    </div>
+                </div>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+
+        <script src="/layouts/script_con.js"></script>
+    </body>
+</html>

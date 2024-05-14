@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/layouts/style_connect.css}">
+    </head>
+    <body>
+        <div class="container" id="container">
+            <h2>Connexion à CloudBank AI</h2>
+
+            <form id="login-form" method="post" action="#"
+                  th:action = "@{/connexion}" th:object = "${user}">
+                <h4 style="text-align: center; color: red" th:text="${problem}"></h4>
+                <div class="form-control">
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input th:field="*{username}" type="text" id="username"
+                           name="username" minlength="2"
+                           placeholder="Entrer votre nom ici...." required>
+                    <div class="col-sm-4">
+                        <span class="text-danger" th:errors="*{username}"> </span>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="password">Mot de passe:</label>
+                    <input th:field="*{password}" type="password" id="password"
+                           name="password" minlength="5"
+                           placeholder="Entrer votre mot de passe...." required>
+                    <div class="col-sm-4">
+                        <span class="text-danger" th:errors="*{password}"> </span>
+                    </div>
+                </div>
+                <button type="submit">Se connecter</button>
+            </form>
+
+            <p>Vous n'avez pas de compte ?
+                <a href="/inscription" id="register-link" class="register-link">S'inscrire</a>
+            </p>
+        </div>
+
+        <script src="/layouts/script_con.js"></script>
+    </body>
+</html>

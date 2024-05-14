@@ -3,81 +3,85 @@
     <head>
         <meta charset="UTF-8">
         <title>Chat Space</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/layouts/style.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{/layouts/style_1.css}" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
 
         <div class="header">
-            <img class="img1" alt="logo inet" src="/images/logo_inet.png" />
+            <img class="logo" alt="logo inet" src="/images/logo_inet.png"
+                 style="top: -3%; left: -3%; scale: 0.4 ; position: absolute; " />
             <div class="two">
-                <h1 style="color:red;">CLOUDBANK AI</h1>
-                <h3 style="color: #1f4760">
-                    L'outil possédant les réponses à toutes vos questions concernant cloudbank
-                </h3>
-            </div>
-            <div class="third">
-                <img class="img2" alt="robot" src="/images/Chatbot_Flat_Vector.png" />
+                <h1>CLOUDBANK AI</h1>
+                <!-- <h3>
+                     Les réponses à toutes questions sur CloudBank se trouvent ici !
+                 </h3>-->
             </div>
         </div>
 
         <div class="main-part">
 
-            <!-- Choix du document a interroger -->
-            <div class="third-part">
-                <div><h5>Choisissez la documentation à interroger</h5></div>
-                <div onclick="chargerPdf(1)"><img src="/images/administration.jpg" /></div>
-                <div onclick="chargerPdf(2)"><img src="/images/back-office.jpg" /></div>
-                <div onclick="chargerPdf(0)"><img src="/images/edition.jpg" /></div>
-                <div onclick="chargerPdf(3)"><img src="/images/front-office.jpg" /></div>
-                <div onclick="chargerPdf(4)"><img src="/images/generalites.jpg" /></div>
-                <div onclick="chargerPdf(6)"><img src="/images/manuel-administrateur.jpg" /></div>
-                <div onclick="chargerPdf(5)"><img src="/images/manuel-de-securite.jpg" /></div>
-                <div onclick="chargerPdf(7)"><img src="/images/procedure-save-back-up.jpg" /></div>
-            </div>
-
             <div class="second-part">
+
+                <!-- Choix du document a interroger -->
+                <div><h3>Choisissez la documentation à interroger</h3></div>
+                <div class="third-part">
+                    <div onclick="chargerPdf(1)"><img src="/images/administration.jpg" /></div>
+                    <div onclick="chargerPdf(2)"><img src="/images/back-office.jpg" /></div>
+                    <div onclick="chargerPdf(0)"><img src="/images/edition.jpg" /></div>
+                    <div onclick="chargerPdf(3)"><img src="/images/front-office.jpg" /></div>
+                    <div onclick="chargerPdf(4)"><img src="/images/generalites.jpg" /></div>
+                    <div onclick="chargerPdf(6)"><img src="/images/manuel-administrateur.jpg" /></div>
+                    <div onclick="chargerPdf(5)"><img src="/images/manuel-de-securite.jpg" /></div>
+                    <div onclick="chargerPdf(7)"><img src="/images/procedure-save-back-up.jpg" /></div>
+                </div>
+
                 <!-- Previsualiser le contenu du document concerné -->
                 <div class="preview">
-                    <iframe class="pdfViewer" id="pdfViewer">
-                    </iframe>
+                    <iframe class="pdfViewer" id="pdfViewer"></iframe>
                 </div>
 
-                <div class="chat-container">
-                    <div class="chat-messages-container" id="chat-messages-container">
-                        <div class="chat-messages">
-                            <!-- Affichage des messages du chat -->
-                            <div th:each="message : ${messages}"
-                                 th:class="${message.sender == 'utilisateur' ?
-                         'message-user' : 'message-cloudbank'}">
-                                <div class="message-header" th:text="${message.sender}"></div>
-                                <div class="message-body" th:text="${message.content}"></div>
-                            </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages-container" id="chat-messages-container">
+                    <div class="chat-messages">
+                        <!-- Affichage des messages du chat -->
+                        <div th:each="message : ${messages}"
+                             th:class="${message.sender == 'Utilisateur' ?
+                                 'message-user' : 'message-cloudbank'}">
+                            <div class="message-header" th:text="${message.sender}"></div>
+                            <div class="message-body" th:text="${message.content}"></div>
                         </div>
                     </div>
-                    <div class="options">
-                        <form action="#" onSubmit="return sendMessage()">
-                            <!-- champ message avec un format requis de valeur defini dans pattern
-                             pour eviter les messages composes uniquement d'espace
-                             (utiliser avant pour envoyer le formulaire method="post"
-                             th:action="@{/chat}") -->
-                            <input type="text" name="message" class="chat-input"
-                                   id="chat-input" pattern=".*\S+.*"
-                                   placeholder="Tapez votre message ici..." required>
-                            <button type="submit"  class="chat-submit-button">Envoyer</button>
-                        </form>
-
-                        <img src="/images/Spinner-1s-200px-2.gif" alt="loading-gid" class="loading" />
-
-                        <button class="chat-reset-button" onclick="deleteMessages()">Réinitialiser</button>
-                    </div>
-
                 </div>
+                <div class="options">
+                    <form action="#" onSubmit="return sendMessage()" id="form">
+                        <!-- champ message avec un format requis de valeur defini dans pattern
+                         pour eviter les messages composes uniquement d'espace
+                         (utiliser avant pour envoyer le formulaire method="post"
+                         th:action="@{/chat}") -->
+                        <textarea name="message" class="chat-input"
+                               id="chat-input" pattern=".*\S+.*" rows="1"
+                               placeholder="Tapez votre message ici..." required>
+                        </textarea>
+                        <button type="submit"  class="chat-submit-button">
+                            <img src="/images/send_Button.png" alt="send button"  class="send"/>
+                        </button>
+                    </form>
+
+                    <img src="/images/Spinner-1s-200px-2.gif" alt="loading-gid" class="loading" />
+
+                    <button class="chat-reset-button" onclick="deleteMessages()">
+                        <img src="/images/reset_button.png" alt="reset button" class="reset" />
+                    </button>
+                </div>
+
             </div>
 
         </div>
 
-        <script src="/layouts/script.js"></script>
+        <script src="/layouts/script_2.js"></script>
 
     </body>
 </html>
